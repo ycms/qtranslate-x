@@ -61,10 +61,12 @@ function qtranxf_language_form() {
 <script type="text/javascript">
 //<![CDATA[
 	function switch_flag(url) {
-		document.getElementById('preview_flag').style.display = "inline";
-		document.getElementById('preview_flag').src = "<?php echo qtranxf_flag_location() ?>" + url;
+        if(document.getElementById('preview_flag')){
+            document.getElementById('preview_flag').style.display = "inline";
+            document.getElementById('preview_flag').src = "<?php echo qtranxf_flag_location() ?>" + url;
+        }
 	}
-	switch_flag(document.getElementById('language_flag').value);
+	switch_flag(jQuery('#language_flag').val());
 //]]>
 </script>
 <div class="form-field">
@@ -608,7 +610,7 @@ echo ' '; printf(__('Please, read %sIntegration Guide%s for more information.', 
 	$languages_predef = qtranxf_default_language_name();
 	$flag_location_url = qtranxf_flag_location();
 	$flag_location_dir = trailingslashit(WP_CONTENT_DIR).$q_config['flag_location'];
-	$flag_location_url_def = content_url(qtranxf_flag_location_default());
+	$flag_location_url_def = home_url(qtranxf_flag_location_default());
 	//trailingslashit(content_url()).'/plugins/'.basename(dirname(QTRANSLATE_FILE)).'/flags/';
 	foreach($language_names as $lang => $language){ if($lang=='code') continue;
 		$flag = $flags[$lang];

@@ -497,7 +497,7 @@ function qtranxf_front_header_css_default(){
 
 function qtranxf_flag_location() {
 	global $q_config;
-	return trailingslashit(content_url()).$q_config['flag_location'];
+	return trailingslashit(home_url()).$q_config['flag_location'];
 }
 
 function qtranxf_flag_location_default() {
